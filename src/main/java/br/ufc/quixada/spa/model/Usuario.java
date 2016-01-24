@@ -1,6 +1,7 @@
 package br.ufc.quixada.spa.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -31,7 +32,9 @@ public class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	
+	@Column (name ="id_facebook")
+	private Long id_facebook;
 	@Column
 	private Byte[] foto;
 
@@ -41,10 +44,7 @@ public class Usuario implements Serializable {
 	@Column(name = "email", unique = true, nullable = false)
 	private String email;
 
-	@Column(name = "senha", nullable = false)
-	private String password;
-
-	@Column(name = "endereco", nullable = false)
+	@Column(name = "endereco")
 	private String endereco;
 
 	@Column(name = "cidade", nullable = false)
@@ -76,13 +76,7 @@ public class Usuario implements Serializable {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
-	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 	public Long getId() {
 		return id;
@@ -133,6 +127,12 @@ public class Usuario implements Serializable {
 		this.livrosDesejados = livrosDesejados;
 	}
 
-	
+	public Long getId_facebook() {
+		return id_facebook;
+	}
+
+	public void setId_facebook(Long id_facebook) {
+		this.id_facebook = id_facebook;
+	}
 	
 }

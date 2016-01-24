@@ -51,7 +51,9 @@ public class LivroController {
 	//ok
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody ResponseStatusMessage insert(@RequestBody Livro livro) {
-		log.debug("Livro - POST");
+	
+		log.debug("Livro - POST:" + livro.toString());
+		
 		livroService.insereLivro(livro, livro.getUsuario().getId());
 		return new ResponseStatusMessage(ResponseStatus.SUCCESS, "Livro inserida com sucesso");
 	}

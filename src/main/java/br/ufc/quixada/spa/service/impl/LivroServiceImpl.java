@@ -81,6 +81,29 @@ public class LivroServiceImpl  extends GenericServiceImpl<Livro> implements Livr
 		return obj != null;
 	}
 
+	@Override
+	public String insereLivroEmWishListByIdFacebook(Long idLivro, Long idFacebookUsuario) {
+		return null;
+	}
+
+	@Override
+	public String removeLivroDaWishListByIdFacebook(Long idLivro, Long idFacebookUsuario) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Livro> findLivroUsuarioEmWishlistByIdFacebook(Long idFacebookUsuario) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insereLivroByIdFacebook(Livro livro, Long idFacebookUsuario) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 	

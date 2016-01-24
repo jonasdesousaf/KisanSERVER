@@ -1,6 +1,7 @@
 package br.ufc.quixada.spa.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -139,6 +140,13 @@ public class Livro implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	@Override
+	public String toString() {
+		return "Livro [id=" + id + ", foto=" + Arrays.toString(foto) + ", titulo=" + titulo + ", sinopse=" + sinopse
+				+ ", numeroPaginas=" + numeroPaginas + ", usuario=" + usuario + ", autores=" + autores + ", generos="
+				+ generos + "]";
 	}
 	
 	
