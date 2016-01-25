@@ -53,10 +53,26 @@ public class JpaGenericRepositoryImpl<T> implements GenericRepository<T> {
 	@Transactional(readOnly=true)
 	public T find(Class<T> entityClass, Object id) {
 		T result = null;
+		
 		result = em.find(entityClass, id);
 		return result;
 	}
 
+	@Override
+	@Transactional(readOnly=true)
+	public T find(Class<T> entityClass ,String query, Map<String, Object> namedParams) {
+			T result = null;
+			String sql = "select * from " + entityClass.getSimpleName() + query;
+			Query q = em.createNativeQuery(sql);
+			setNamedParameters(q, namedParams);
+			result = (T) q.getSingleResult();
+		
+			return result;
+		}
+		
+		
+	
+	
 	@Override
 	public List<T> find(Class<T> entityClass) {
 		return find(entityClass, -1, -1);
@@ -152,6 +168,7 @@ public class JpaGenericRepositoryImpl<T> implements GenericRepository<T> {
 		Query q = em.createNativeQuery(sql);
 		setNamedParameters(q, namedParams);
 		return q.executeUpdate();
+		
 	}
 	
 }

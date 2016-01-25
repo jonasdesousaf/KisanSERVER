@@ -12,5 +12,8 @@ public interface UsuarioService extends GenericService<Usuario>{
 	public List<Livro> findLivrosById(Long id);
 	
 	public Usuario findUsuarioByIdFacebook(Long idFacebook);
+
+
+	
 	
 }

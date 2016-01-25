@@ -45,4 +45,6 @@ public interface GenericRepository<T> {
 
 	public int executeUpdate(String sql, Map<String, Object> namedParams);
 
+	 public T find(Class<T> entityClass, String query, Map<String, Object> namedParams);
+
 }

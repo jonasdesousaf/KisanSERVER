@@ -61,7 +61,6 @@ public class LivroServiceImpl  extends GenericServiceImpl<Livro> implements Livr
 		} else {
 			return "Livro removido com sucesso da WishList";
 		}	
-
 	
 	}
 

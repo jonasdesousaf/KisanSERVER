@@ -92,4 +92,9 @@ public class GenericServiceImpl<T> implements GenericService<T> {
 	public int executeUpdate(String sql, Map<String, Object> namedParams) {
 		return repository.executeUpdate(sql, namedParams);
 	}
+
+	@Override
+	public T find(Class<T> entityClass, String query, Map<String, Object> namedParams) {
+		return repository.find(entityClass, query, namedParams);
+	}
 }

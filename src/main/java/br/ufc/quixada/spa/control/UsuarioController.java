@@ -24,6 +24,7 @@ import br.ufc.quixada.spa.service.UsuarioService;
 @RequestMapping("/usuario")
 public class UsuarioController {
 
+	
 private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	@Inject
@@ -33,6 +34,19 @@ private Logger log = LoggerFactory.getLogger(this.getClass());
 	public @ResponseBody List<Livro> findLivrosById(@PathVariable Long id) {
 		log.debug("Usuario - GET (id) - findLivrosById");
 		return usuarioService.findLivrosById(id);
+	}
+	
+	
+	@RequestMapping(value="{id}", method = RequestMethod.GET)
+	public @ResponseBody Usuario findById(@PathVariable Long id) {
+		log.debug(" Usuario - GET (id)");
+		return usuarioService.find(Usuario.class, id);
+	}
+	
+	@RequestMapping(value="/buscarIdFacebook/{idFacebook}", method = RequestMethod.GET)
+	public @ResponseBody Usuario findByIdFacebook(@PathVariable Long idFacebook) {
+		log.debug(" Usuario - GET (idFacebook) ");
+		return usuarioService.findUsuarioByIdFacebook(idFacebook);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -47,4 +61,14 @@ private Logger log = LoggerFactory.getLogger(this.getClass());
 		usuarioService.save(usuario);
 		return new ResponseStatusMessage(ResponseStatus.SUCCESS, "Usuario inserida com sucesso");
 	}
+	
+
+	@RequestMapping(method = RequestMethod.PUT)
+	public @ResponseBody Usuario atualizar(@RequestBody Usuario usuario) {
+		log.debug("Usuario - PUT");
+		usuarioService.update(usuario);
+		return usuarioService.find(Usuario.class, usuario.getId());
+	}
+	
+	
 }
